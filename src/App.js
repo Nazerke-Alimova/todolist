@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+//import { AiFillAndroid } from 'react-icons/ai';
+//import Input  from './components/Input/Input';
+//import './components/Index/Index.css'
+import './App.css'
+import Header from './components/Header/Header';
+import AddTodo from './components/AddTodo/AddTodo';
+import Input from './components/AddTodo/Input/Input';
+import { useState } from 'react';
 
 function App() {
+const [tasks, setTasks] =  useState([
+  {id: 2, value: 'Second to do'},
+  {id: 3, value: 'Third to do'}
+])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='App'>
+         <Header/>
+         <AddTodo setTasks={setTasks} />
+         {tasks.map(el => {
+           return (
+             <div key={el.id}>{el.value}</div>
+           )
+         })}
+        </div>
+
   );
 }
-
 export default App;
